@@ -1,3 +1,7 @@
+// Write a Recursive Function that:
+//     - Recieve an Array and its Size
+//     - Returns the Average Value of the Array
+
 #include <stdio.h>
 
 double recursive_find_average(double arr[], int n){
