@@ -1,0 +1,18 @@
+{
+  "git.ignoreLimitWarning": true,
+  "files.associations": {
+    "*.ejs": "html",
+    "stdio.h": "c",
+    "limits": "c",
+    "ratio": "c",
+    "algorithm": "c",
+    "limits.h": "c",
+    "__bit_reference": "c",
+    "bitset": "c",
+    "unordered_map": "c",
+    "stdlib.h": "c",
+    "variant": "c",
+    "sstream": "c"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
+}
