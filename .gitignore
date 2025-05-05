@@ -22,3 +22,16 @@
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# 忽略所有 C/C++ 的物件檔
+*.o
+*.obj
+
+# 忽略常見的可執行檔（Unix、Windows）
+a.out
+*.out
+*.exe
+
+# 如果你習慣把執行檔放在 bin/ 或 build/ 目錄：
+bin/
+build/
