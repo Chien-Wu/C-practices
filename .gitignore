@@ -1,37 +1,10 @@
-##### MacOS
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
+# 先忽略所有檔案
+*
 
-# Thumbnails
-._*
+# 但重新包含所有資料夾（不然就連目錄也被忽略了）
+!*/
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# 忽略所有 C/C++ 的物件檔
-*.o
-*.obj
-
-# 忽略常見的可執行檔（Unix、Windows）
-a.out
-*.out
-*.exe
-
-# 如果你習慣把執行檔放在 bin/ 或 build/ 目錄：
-bin/
-build/
+# 再把需要放進 repo 的檔案排除於外：
+!*.c
+!*.h
+!.gitignore
