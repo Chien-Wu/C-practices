@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 void print_from_start(int arr[], int n);
 void print_from_end(int arr[], int n);
 
