@@ -8,7 +8,7 @@
 #define MAX_POKER_DECK  (MAX_POKER_NUM * MAX_POKER_PAT)
 #define PLAYER_COUNT        4
 #define CARDS_PER_PLAYER    5
-#define SIMULATIONS     100000
+#define SIMULATIONS    100000
 
 //–– Card & Player Types
 typedef struct {
