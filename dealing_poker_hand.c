@@ -10,7 +10,7 @@
 #define CARDS_PER_PLAYER    5
 #define SIMULATIONS    100000
 
-//–– Card & Player Types
+
 typedef struct {
     int rank;   // 0..12 (Ace..King)
     int suit;   // 0..3  (Spades, Hearts, Diamonds, Clubs)
@@ -20,14 +20,12 @@ typedef struct {
     Card hand[CARDS_PER_PLAYER];
 } Player;
 
-//–– Full Deck and Game State
 typedef struct {
     Card  deck[MAX_POKER_DECK];
-    int   next_card;           // index of next card to deal
+    int   next_card;
     Player players[PLAYER_COUNT];
 } PokerGame;
 
-//–– Hand Rankings
 typedef enum {
     RANK_STRAIGHT_FLUSH,
     RANK_FOUR_OF_A_KIND,
@@ -49,10 +47,7 @@ static const char *RANK_NAMES[RANK_COUNT] = {
     "Nothing"
 };
 
-//–– Helpers for Printing
-static const char *RANK_STRINGS[MAX_POKER_NUM] = {
-    "Ac","2","3","4","5","6","7","8","9","10","Ja","Qu","Ki"
-};
+static const char *RANK_STRINGS[MAX_POKER_NUM] = {"Ac","2","3","4","5","6","7","8","9","10","Ja","Qu","Ki"};
 static const char *SUIT_STRINGS[MAX_POKER_PAT] = {"S","H","D","C"};
 
 void print_card(const Card *c) {
@@ -68,7 +63,6 @@ void print_player(const Player *p, int player_no) {
     putchar('\n');
 }
 
-//–– Deck Setup & Shuffle (Fisher–Yates)
 void init_deck(Card deck[]) {
     for (int r = 0; r < MAX_POKER_NUM; r++)
         for (int s = 0; s < MAX_POKER_PAT; s++)
@@ -84,7 +78,6 @@ void shuffle_deck(Card deck[]) {
     }
 }
 
-//–– Deal
 void deal_hands(PokerGame *g) {
     g->next_card = 0;
     for (int c = 0; c < CARDS_PER_PLAYER; c++) {
@@ -94,7 +87,6 @@ void deal_hands(PokerGame *g) {
     }
 }
 
-//–– Hand Evaluation Helpers
 static void sort_ints(int a[], int n) {
     for (int i = 1; i < n; i++) {
         int key = a[i], j = i - 1;
@@ -158,9 +150,7 @@ HandRank evaluate_hand(const Player *p) {
     return RANK_NONE;
 }
 
-//–– Simulation & Tally
 void simulate(int sims, double out_probs[RANK_COUNT]) {
-    // zero counts
     int counts[RANK_COUNT] = {0};
     PokerGame game;
 
@@ -169,30 +159,25 @@ void simulate(int sims, double out_probs[RANK_COUNT]) {
         shuffle_deck(game.deck);
         deal_hands(&game);
 
-        // evaluate each player's hand
         for (int p = 0; p < PLAYER_COUNT; p++) {
             HandRank hr = evaluate_hand(&game.players[p]);
             counts[hr]++;
         }
     }
-    // convert to probabilities
     double total_hands = sims * PLAYER_COUNT;
     for (int r = 0; r < RANK_COUNT; r++)
         out_probs[r] = counts[r] / total_hands * 100.0;
 }
 
-//–– Entry Point
 int main(void) {
     srand((unsigned)time(NULL));
 
     double probs[RANK_COUNT];
     simulate(SIMULATIONS, probs);
 
-    printf("Empirical probabilities after %d deals (×%d hands):\n",
-           SIMULATIONS, PLAYER_COUNT);
+    printf("Empirical probabilities after %d deals (×%d hands):\n", SIMULATIONS, PLAYER_COUNT);
     for (int r = 0; r < RANK_COUNT; r++) {
-        printf("  %-18s : %6.4f%%\n",
-               RANK_NAMES[r], probs[r]);
+        printf("  %-18s : %6.4f%%\n", RANK_NAMES[r], probs[r]);
     }
     return 0;
 }
