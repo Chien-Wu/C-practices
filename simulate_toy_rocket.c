@@ -26,7 +26,8 @@ int main(void){
     double t=0, v=0, a=0, y=0, y_max=0;
     Record_t record[40];
 
-    for(int i = 0; i <40; i++){
+    int i =0;
+    while(y > 0 || i==0){
         if (fuel > 0){
             mass = DRY_MASS + fuel;
             thrust = THRUST;
@@ -44,7 +45,7 @@ int main(void){
         double F_d     = (v > 0 ?  -drag_mag : drag_mag);
         double F_g = - mass * g;
         double F_t = thrust;
-        
+
         double F_net = F_t + F_g + F_d;
 
         a = F_net / mass;
@@ -55,13 +56,12 @@ int main(void){
         if (y > y_max) y_max = y;
         if (y <= 0) break;
 
-        
         record[i].a = a;
         record[i].t = t;
         record[i].v = v;
         record[i].y = y;
 
         printf("%.lf\n", record[i].y);
-
+        i++;
     }
 }
