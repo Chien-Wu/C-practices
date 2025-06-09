@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/construct-k-palindrome-strings/?envType=daily-question&envId=2025-06-08
+
 #include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
