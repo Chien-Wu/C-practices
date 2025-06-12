@@ -1,16 +1,12 @@
-long long findMaximumScore(int* nums, int numsSize) {
-    int curr = 0;
-    int tot = 0;
-    for (int i = 0; i < numsSize; i++){
-        if (nums[i] > nums[curr]){
-            tot += (i-curr)*nums[curr];
-            curr = i;
-            continue;
-        }
-        if (i = numsSize-1){
-            tot += (i-curr)*nums[curr];
-        }
-    }
-    
-    return tot;
-}
+for (int i = 0; pattern[i] != '\0'; i++){
+    //     if (pattern[i] == 'D'){
+    //         cul_D++;
+    //     }
+    //     if (pattern[i] == "I"){
+    //         for (int i = cul_D; i>0; i--){
+    //             strcat(result, (char)curr_max-i);
+    //         }
+    //         curr_max -= cul_D;
+    //         cul_D = 1;
+    //     }
+    // }

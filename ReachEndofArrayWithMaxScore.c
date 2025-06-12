@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/reach-end-of-array-with-max-score
+
 #include <stdio.h>
 
 long long findMaximumScore(int* nums, int numsSize) {
